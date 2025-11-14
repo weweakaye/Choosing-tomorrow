@@ -1,0 +1,109 @@
+/* Mobile Game Style - lively animated UI */
+
+/* --- base --- */
+:root{
+  --bg1: linear-gradient(180deg,#e0f7ff,#f9f9ff);
+  --card:#ffffff;
+  --muted:#6b6b6b;
+  --accent:#4CAF50;
+  --accent2:#6ab04c;
+  --danger:#d9534f;
+  --glass: rgba(255,255,255,0.85);
+  --shadow: 0 10px 30px rgba(15,15,20,0.12);
+  --glassDark: rgba(20,30,40,0.35);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; padding:0;
+  font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--bg1);
+  min-height:100vh;
+  color:#102023;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+}
+
+/* Header */
+#uiHeader{
+  display:flex; justify-content:space-between; align-items:center;
+  padding:12px 16px; gap:10px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+  box-shadow: var(--shadow);
+  position:sticky; top:0; z-index:40;
+}
+#title{ font-weight:700; font-size:18px; color:#0a2940; }
+#smallStats{ font-size:12px; color:var(--muted); display:flex; gap:10px; align-items:center; }
+
+/* panels */
+.panel{ padding:18px; min-height:calc(100vh - 64px); display:flex; align-items:center; justify-content:center; position:relative; }
+
+/* center cards */
+.card{ background:var(--card); border-radius:14px; padding:18px; box-shadow:var(--shadow); }
+
+/* start card style */
+.startCard{ width:92%; max-width:540px; text-align:center; padding:26px; border-radius:16px; }
+.muted{ color:var(--muted); }
+.small{ font-size:12px; }
+
+/* layout for game screen */
+.gameInner{
+  width:100%; max-width:1100px; display:flex; gap:18px; align-items:flex-start; padding:12px;
+  justify-content:center;
+}
+
+/* left column: portrait */
+.leftColumn{ width:260px; display:flex; justify-content:center; }
+.portraitWrap{ width:220px; height:320px; border-radius:16px; position:relative; overflow:visible; display:flex; align-items:center; justify-content:center; }
+.portrait{
+  width:200px; height:300px; object-fit:cover; border-radius:12px; box-shadow:0 8px 30px rgba(0,0,0,0.24); transform-origin:center;
+  transition: transform 0.4s ease;
+}
+.portraitGlow{
+  position:absolute; width:240px; height:340px; border-radius:18px; filter:blur(30px);
+  background: radial-gradient(circle at 30% 20%, rgba(90,200,255,0.15), rgba(255,255,255,0));
+  pointer-events:none;
+}
+
+/* right column: dialogue */
+.rightColumn{ flex:1; display:flex; align-items:flex-end; }
+.dialogueCard{ width:100%; max-width:720px; border-radius:16px; padding:18px 18px 12px 18px; position:relative; }
+
+/* name & text */
+#dialogueMeta{ display:flex; align-items:center; gap:12px; margin-bottom:10px; }
+#dialogueSpeaker{ font-weight:700; color:#0a76c2; }
+.dialogueText{ font-size:16px; line-height:1.5; min-height:76px; }
+
+/* choices area */
+.choiceArea{ margin-top:12px; display:flex; flex-direction:column; gap:12px; align-items:center; }
+
+/* button styles */
+.btn{ padding:10px 16px; border-radius:12px; border:none; cursor:pointer; background:linear-gradient(180deg,var(--accent2),var(--accent)); color:white; font-weight:600; box-shadow:0 6px 12px rgba(0,0,0,0.12); transition:transform .14s ease, box-shadow .14s ease; }
+.btn:hover{ transform:translateY(-4px); box-shadow:0 12px 20px rgba(0,0,0,0.16); }
+.btn.primary{ background: linear-gradient(180deg,#2ea44f,#1f8a3d); }
+.btnRow{ display:flex; gap:12px; justify-content:center; margin-top:12px; }
+
+/* mini buttons */
+.miniBtn{ padding:8px 10px; border-radius:10px; background:rgba(255,255,255,0.9); border:none; box-shadow:0 6px 14px rgba(0,0,0,0.08); cursor:pointer; margin:6px; }
+
+/* bottom controls */
+#controlsBar{ position:fixed; bottom:14px; right:14px; display:flex; gap:8px; z-index:50; }
+
+/* end card */
+.endCard{ width:92%; max-width:640px; text-align:center; padding:26px; border-radius:16px; }
+
+/* background layers + vision overlay */
+.bgLayer{ position:fixed; left:0; top:0; right:0; bottom:0; z-index:-10;
+  background: linear-gradient(to bottom, #eaf6ff, #f9fbff); transition:background .8s ease; }
+.vision{ position:fixed; left:0; top:0; right:0; bottom:0; z-index:60; display:flex; align-items:center; justify-content:center; background:rgba(5,8,15,0.6); backdrop-filter:blur(4px); color:white; font-size:22px; text-align:center; padding:18px; }
+
+/* hidden helper */
+.hidden { display:none !important; }
+
+/* small responsive tweaks */
+@media(max-width:900px){
+  .gameInner{ flex-direction:column; align-items:center; }
+  .leftColumn{ order:2; }
+  .rightColumn{ order:1; width:100%; }
+  .portrait{ width:160px; height:240px; }
+}

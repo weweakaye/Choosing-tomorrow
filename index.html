@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Choosing Tomorrow — Enhanced</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <div id="app">
+    <!-- Header (mobile style) -->
+    <header id="uiHeader">
+      <div id="title">Choosing Tomorrow</div>
+      <div id="smallStats">
+        <span id="sStress">Stress: 0</span>
+        <span id="sKind">Kind: 0</span>
+        <span id="sFocus">Focus: 0</span>
+        <span id="sCourage">Courage: 0</span>
+      </div>
+    </header>
+
+    <!-- Start Screen -->
+    <section id="startScreen" class="panel center">
+      <div class="card startCard">
+        <h1>Choosing Tomorrow</h1>
+        <p class="muted">A pulse-y mobile-style interactive story — choices shape visions and fate.</p>
+        <div class="btnRow">
+          <button class="btn primary" id="startBtn">Start Adventure</button>
+          <button class="btn" id="loadBtn">Load Save</button>
+        </div>
+        <p class="muted small">Tip: Add image/audio files in the same folder for full experience.</p>
+      </div>
+    </section>
+
+    <!-- Game Screen -->
+    <section id="gameScreen" class="panel hidden">
+      <!-- Parallax background layers -->
+      <div id="bgLayer" class="bgLayer"></div>
+      <div id="visionOverlay" class="vision hidden"></div>
+
+      <!-- Center content -->
+      <div class="gameInner">
+        <div class="leftColumn">
+          <div class="portraitWrap">
+            <img id="portrait" src="" alt="" class="portrait hidden"/>
+            <div id="portraitGlow" class="portraitGlow hidden"></div>
+          </div>
+        </div>
+
+        <div class="rightColumn">
+          <div id="dialogueCard" class="card dialogueCard">
+            <div id="dialogueMeta"><span id="dialogueSpeaker">Narrator</span></div>
+            <div id="dialogueText" class="dialogueText">...</div>
+            <div id="choiceArea" class="choiceArea"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- bottom controls -->
+      <div id="controlsBar">
+        <button class="miniBtn" id="saveBtn">Save</button>
+        <button class="miniBtn" id="musicToggle">Music: On</button>
+        <button class="miniBtn" id="resetBtn">Reset</button>
+      </div>
+    </section>
+
+    <!-- Ending screen -->
+    <section id="endScreen" class="panel hidden center">
+      <div class="card endCard">
+        <h2 id="endTitle">Ending</h2>
+        <p id="endDesc">...</p>
+        <div class="btnRow">
+          <button class="btn primary" id="replayBtn">Play Again</button>
+          <button class="btn" id="exportBtn">Export Summary</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Audio assets (place files with these names in the folder) -->
+  <!-- bgm.mp3 — looping background music -->
+  <!-- click.mp3 — button click -->
+  <!-- chime.mp3 — positive chime -->
+  <!-- suspense.mp3 — tense tension loop for visions -->
+  <!-- vision_hit.mp3 — short vision hit / swoosh -->
+  <audio id="bgm" src="bgm.mp3" loop preload="auto"></audio>
+  <audio id="click" src="click.mp3" preload="auto"></audio>
+  <audio id="chime" src="chime.mp3" preload="auto"></audio>
+  <audio id="suspense" src="suspense.mp3" loop preload="auto"></audio>
+  <audio id="visionHit" src="vision_hit.mp3" preload="auto"></audio>
+
+  <script src="game.js"></script>
+</body>
+</html>
